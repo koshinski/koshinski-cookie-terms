@@ -1,0 +1,15 @@
+.cookie-terms {
+	z-index:10;
+	position:fixed;
+	top:0;
+	right:0;
+	left:0;
+	background:rgba(0,0,0,0.4);
+	color:#fff;
+	text-align:center;
+	padding:5px 0;
+}
+.cookie-terms > .btn-group {
+	margin-left:10px;
+}
+
