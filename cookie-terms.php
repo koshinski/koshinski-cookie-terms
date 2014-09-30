@@ -3,10 +3,12 @@
 Plugin Name: Koshinski - Cookie Terms
 Plugin URI:
 Description: Dieses Wordpress Plugin blendet einen Hinweis über die Verwendung von Cookies auf der Webseite ein.
-Version: 1.0
+Version: 1.1
 Author: koshinski
 Author Email: kosh@koshinski.de
 Author URI: http://www.koshinski.de/
+Text Domain: cookie_terms
+Domain Path: /lang/
 License:
 
   Copyright 2014 koshinski (kosh@koshinski.de)
@@ -52,6 +54,12 @@ class CookieTerms {
 		if( isset($pagenow) && !empty($pagenow) && !in_array( $pagenow, array( 'wp-login.php', 'wp-register.php' ) ) ){
 			add_action( 'init', array( &$this, 'init_cookieterms' ) );
 		}
+		add_action( 'plugins_loaded', array( $this, 'init_translation' ) );
+	}
+	
+	function init_translation(){
+		// Setup localization
+		load_plugin_textdomain( 'cookie_terms', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	}
 	
 	/**
@@ -96,7 +104,7 @@ class CookieTerms {
 
 		if( file_exists( $file ) ) {
 			if( $is_script ) {
-				$display_text = get_option( self::slug . '_display_text', __('Durch die Benutzung unserer Webseite stimmen Sie der Verwendung von Cookies zu.', self::domain) );
+				$display_text = get_option( self::slug . '_display_text', __('By using this site, you accept the use of cookies.', 'cookie_terms') );
 				$more_url = get_option( self::slug . '_more_url', 0 );
 				
 				$display_more_url = false;
@@ -107,11 +115,11 @@ class CookieTerms {
 				wp_register_script( $name, $url, array('jquery') ); //depends on jquery
 				wp_localize_script(
 					$name,
-					self::domain,
+					'cookie_terms',
 					array(
 						'msg' => __( stripslashes($display_text) ),
-						'label_button_ok' => __( 'Ok', self::domain ),
-						'label_button_more' => ( ( $display_more_url ) ? __( 'Mehr erfahren', self::domain ) : 0 ),
+						'label_button_ok' => __( 'Ok', 'cookie_terms' ),
+						'label_button_more' => ( ( $display_more_url ) ? __( 'learn more', 'cookie_terms' ) : 0 ),
 						'more_url' => $more_url
 					)
 				);
@@ -144,11 +152,11 @@ class CookieTerms {
 	function settings_page(){
 		if( isset( $_POST['submit'] ) ){
 			if( isset( $_POST['display_text'] ) ){
-				$display_text = $_POST['display_text'];
+				$display_text = esc_textarea($_POST['display_text']);
 				update_option( self::slug . '_display_text' , $display_text);
 			}
 			if( isset( $_POST['more_url'] ) ){
-				$more_url = esc_html( $_POST['more_url'] );
+				$more_url = esc_attr( $_POST['more_url'] );
 				update_option( self::slug . '_more_url' , $more_url);
 			}
 		}
@@ -160,14 +168,14 @@ class CookieTerms {
 			<?php wp_nonce_field( self::slug . '_nonce_action', self::slug . '_nonce_field' ); ?>
 			<table class="form-table">
 				<tr>
-					<th><label for="display_text">Angezeigter Text</label></th>
+					<th><label for="display_text"><?php _e('Displayed Text', 'cookie_terms'); ?></label></th>
 					<td><textarea id="display_text" name="display_text" class="large-text code" cols="50" rows="4"><?php echo stripslashes($display_text); ?></textarea></td>
 				</tr>
 				<tr>
-					<th><label for="more_url">Mehr Erfahren - Link</label></th>
+					<th><label for="more_url"><?php _e('read more - link', 'cookie_terms'); ?></label></th>
 					<td>
 						<select id="more_url" name="more_url" size="1">
-							<option value="0" class="disabled">- keinen Link anzeigen -</option>
+							<option value="0" class="disabled">- <?php _e('hide link', 'cookie_terms'); ?> -</option>
 							<?php
 							$alle_seiten = get_pages();
 							foreach( $alle_seiten as $page ){
@@ -180,17 +188,9 @@ class CookieTerms {
 			
 			</table>
 			<div class="clearfix">
-				<button class="button button-primary" name="submit" type="submit"><?php _e( 'Save Changes' ); ?></button>
+				<button class="button button-primary" name="submit" type="submit"><?php _e( 'Save Changes', 'cookie_terms' ); ?></button>
 			</div>
 		</form>
-		
-		<div><br/>
-		<input type="text" name="test1" id="test1" class="regular-text koshinski-media-upload" value="">
-		</div>
-
-		<div><br/>
-		<input type="text" name="test2" id="test2" class="regular-text koshinski-media-upload" value="">
-		</div>
 		
 		<?php
 	}

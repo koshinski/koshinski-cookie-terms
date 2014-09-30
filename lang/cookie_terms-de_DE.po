@@ -1,0 +1,50 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Koshinski Cookie Terms\n"
+"POT-Creation-Date: 2014-09-30 10:27+0100\n"
+"PO-Revision-Date: 2014-09-30 10:28+0100\n"
+"Last-Translator: koshinski <kosh@koshinski.de>\n"
+"Language-Team: koshinski <kosh@koshinski.de>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: ../koshinski-cookie-terms/cookie-terms.php:107 cookie-terms.php:107
+msgid "By using this site, you accept the use of cookies."
+msgstr ""
+"Durch die Benutzung dieser Seite akzeptieren Sie die Verwendung von Cookies."
+
+#: ../koshinski-cookie-terms/cookie-terms.php:121 cookie-terms.php:121
+msgid "Ok"
+msgstr "Ok"
+
+#: ../koshinski-cookie-terms/cookie-terms.php:122 cookie-terms.php:122
+msgid "learn more"
+msgstr "Mehr erfahren"
+
+#: ../koshinski-cookie-terms/cookie-terms.php:141 cookie-terms.php:141
+msgid " - Options"
+msgstr " - Optionen"
+
+#: ../koshinski-cookie-terms/cookie-terms.php:171 cookie-terms.php:171
+msgid "Displayed Text"
+msgstr "angezeigter Text"
+
+#: ../koshinski-cookie-terms/cookie-terms.php:175 cookie-terms.php:175
+msgid "read more - link"
+msgstr "Mehr erfahren - Link"
+
+#: ../koshinski-cookie-terms/cookie-terms.php:178 cookie-terms.php:178
+msgid "hide link"
+msgstr "kein Link anzeigen"
+
+#: ../koshinski-cookie-terms/cookie-terms.php:191 cookie-terms.php:191
+msgid "Save Changes"
+msgstr "Einstellungen speichern"

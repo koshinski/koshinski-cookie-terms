@@ -10,7 +10,7 @@ jQuery(document).ready(function($){
 		
 		$(document).on('click', '#cookie-terms-accept', function(e){
 			e.preventDefault();
-			$.cookie( 'cookie-terms', 'accept', { expires: 7 } );
+			$.cookie( 'cookie-terms', 'accept', { expires: 14 } );
 			$('.cookie-terms').fadeOut(250, function(){
 				$(this).remove();
 			});
