@@ -3,7 +3,7 @@
 Plugin Name: Koshinski - Cookie Terms
 Plugin URI:
 Description: Dieses Wordpress Plugin blendet einen Hinweis über die Verwendung von Cookies auf der Webseite ein.
-Version: 1.1
+Version: 1.2
 Author: koshinski
 Author Email: kosh@koshinski.de
 Author URI: http://www.koshinski.de/
