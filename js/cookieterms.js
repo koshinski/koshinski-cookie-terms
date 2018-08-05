@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-	if( 'accept' !== $.cookie('cookie-terms') ){
+	if( 'accept' !== Cookies.get('cookie-terms') ){
 		$('body').prepend(
 			'<div class="cookie-terms">' + cookie_terms.msg +
 				'<div class="btn-group">' +
@@ -7,14 +7,12 @@ jQuery(document).ready(function($){
 				'</div>' +
 			'</div>'
 		);
-		
 		$(document).on('click', '#cookie-terms-accept', function(e){
 			e.preventDefault();
-			$.cookie( 'cookie-terms', 'accept', { expires: 14 } );
+			Cookies.set( 'cookie-terms', 'accept', { expires: 14 } );
 			$('.cookie-terms').fadeOut(250, function(){
 				$(this).remove();
 			});
 		});
 	}
-	
 });
